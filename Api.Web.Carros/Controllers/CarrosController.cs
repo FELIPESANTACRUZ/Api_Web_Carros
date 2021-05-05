@@ -29,5 +29,19 @@ namespace Api.Web.Carros.Controllers
             //praticamente um comando "select * from Carros"
             return _context.Carros;
         }
+
+        //criando novo objeto carro
+        [HttpPost]
+        public IActionResult post(Carro carro)
+        {
+            if (carro != null)
+            {
+                _context.Carros.Add(carro);
+                //OK retorna status 200
+                return Ok("Carro adicionado na garagem");
+            }
+
+            return BadRequest();
+        }
     }
 }
